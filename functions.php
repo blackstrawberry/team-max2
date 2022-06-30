@@ -16,4 +16,7 @@ function main_features(){
   add_theme_support("title_tag");
 }
 add_action('after_setup_theme', 'main_features');
+
+// Admin Bar
+add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
 ?>

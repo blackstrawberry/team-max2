@@ -1,0 +1,11 @@
+.admin-bar .site-container {
+  padding-top: 0px;
+}
+
+@media only screen and (max-width: 782px) {
+  
+  .admin-bar .site-container {
+    padding-top: 0px;
+  }
+  
+}

@@ -16,11 +16,12 @@
 <body>
     <div class="body_wrap">
         <header id="header">
-            <div class="logo"><img src="<?php echo $asset_uri;?>/img/max_logo_white.svg"></div>
+            <div class="logo" onclick="location.href='/';"><img src="<?php echo $asset_uri;?>/img/max_logo_white.svg"></div>
             <div class="menu" id="menu">MENU</div>
             <div class="nav" id="nav">
-                <div>about us</div>
-                <div>photo</div>
-                <div>video</div>
+                <div onclick="location.href='/';">Home</div>
+                <div onclick="location.href='/aboutus';">about us</div>
+                <div onclick="location.href='/photo';">photo</div>
+                <div onclick="location.href='https://instagram.com/max_ketball?igshid=NWRhNmQxMjQ=';">video</div>
             </div>
         </header>

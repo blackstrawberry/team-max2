@@ -11,25 +11,9 @@ img{width:100%;}
 html {
     scroll-behavior: smooth;
 }
-html::before{
-    background-image: url('../img/basketballcourt.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left: 0;
-    content: "";
-    -webkit-filter: blur(5px); 
-    -moz-filter: blur(5px); 
-    -o-filter: blur(5px); 
-    -ms-filter: blur(5px);
-}
 
 
-.body_wrap{overflow:hidden ;position: relative;z-index: 99;background-color: #fff;}
+.body_wrap{overflow:hidden ;position: relative;z-index: 99;}
 header{
     z-index: 999;
     max-width: 475px;
@@ -37,8 +21,8 @@ header{
     position:fixed;
     top:0;left:50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(20px);
     height:50px;
     transition:.5s;
     display: flex;
@@ -55,16 +39,32 @@ header{
         top:50%;
         transform: translateY(-50%);
         width:100%;
-        height: 100vh;
+        height: 0vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         opacity: 0;
+        display: none;
         transition: .5s;
         z-index: -1;
-        &.active{opacity: 1;}
-        div{font-size: 30px;color:#fff;padding:20px 0;text-transform: uppercase;}
+        &.active{opacity: 1;height: 100vh;display: flex;}
+        div{font-size: 30px;color:#fff;padding:20px 0;text-transform: uppercase;cursor: pointer;position: relative;}
+        div::after{
+            content:"";
+            position: absolute;
+            bottom:20px;left:0;
+            width:0%;height: 1px;
+            background-color: #fff;
+            transition: .5s;
+        }
+        div:hover::after{
+            content:"";
+            position: absolute;
+            bottom:20px;left:0;
+            width:100%;height: 1px;
+            background-color: #fff;
+        }
     }
 }
 
@@ -89,6 +89,7 @@ main{
                 font-weight: 600;
                 font-size: 40px;
             }
+            .orange{color: #d30000;}
             span{font-size: 15px;letter-spacing:0.2px;}
         }
     }
@@ -112,7 +113,7 @@ main{
         -webkit-align-items: center;
         align-items: center;
 
-        p{
+        .number{
             position: absolute;
             bottom:25px;right:60px;
             font-size: 25px;font-weight: 500;color:#fff;
@@ -172,6 +173,7 @@ main{
 }
 
 footer{
+    background: rgb(242, 242, 242);
     padding-bottom: 40px;
     ul{
         padding:40px 20px 60px;text-align: left;
@@ -193,7 +195,7 @@ footer{
             }
             span{font-size: 15px;color:#b0b0b0;display: block;}
             img{width:20px;padding-left: 10px;}
-            img:nth-child(2){width:20px;padding-left: 10px;}
+            img:nth-child(2){width:20px;padding-left: 10px;transform: translateY(2px);}
         }
         .email{
             padding-top: 20px;
@@ -204,7 +206,7 @@ footer{
                 a{color:#000;}
             }
             span{font-size: 15px;color:#b0b0b0;display: block;}
-            img{width:20px;padding-left: 10px;}
+            img{width:20px;padding-left: 10px; transform: translateY(2px);}
         }
         .site{
             padding-top: 20px;
@@ -215,7 +217,7 @@ footer{
                 a{color:#000;}
             }
             span{font-size: 15px;color:#b0b0b0;display: block;}
-            img{width:20px;padding-left: 10px;}
+            img{width:20px;padding-left: 10px; transform: translateY(2px);}
         }
     }
 }
@@ -234,3 +236,114 @@ footer{
 }
 .top_btn .aside_arrow{width:15px;}
 .top_btn a.active{opacity:1;}
+
+.main_about{
+    .main_about_img{height: 350px; overflow: hidden;margin-top: 50px;}
+    .wrap{
+        padding:20px 20px 100px;
+        text-align:left;
+        .title{font-size: 40px;padding-bottom: 10px;}
+        .detail{padding-bottom: 50px;}
+        .team{
+            padding-bottom: 10px;
+            span{font-size: 12px; color:#8c8c8c;}
+        }
+        .input{
+            border-bottom: 1px solid #000;
+            input{
+                border-radius: none;
+                border:none;
+                border-right:0px; 
+                border-top:0px; 
+                border-left:0px; 
+                border-bottom:0px;
+                background-color: #f2f2f2;
+                height: 30px;
+                line-height: 35px;
+                font-size: 20px;
+                font-weight: 400;
+                padding: 5px 0;
+                
+            }
+            input:focus{border:none;background:none;color:#000;outline: none;}
+        }
+        .support{
+            margin-top:10px;position:relative;
+            img{width:10px;padding-left: 10px; transform: translateY(2px);}
+            &::after{
+                content: "";
+                width:83px;height: 1px;
+                background-color: #000;
+                position: absolute;
+                left:0;
+                bottom:-10px;
+            }
+        }
+    }
+}
+.main_photo{
+    .wrap{
+        padding:130px 20px 0;
+        position: relative;
+        .title{
+            max-width: 475px;
+            transform: translateX(-50%);
+            background-color: #f2f2f2;
+            text-align: left;
+            font-size:40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 50px;left:50%;
+            width: 100%;
+            padding-bottom: 5px;
+            div{padding-left: 20px;}
+            ul{
+                display: flex;padding:0 20px;
+                li{
+                    &:nth-child(2){padding-left: 20px;}
+                    font-size: 30px;
+                    img{width:20px;}
+                    cursor: pointer;
+                }
+            }
+        }
+        .img_box{
+            padding-top:40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .box{
+                width:45%;height: 120px;
+                border: 1px solid #000;
+                margin-bottom: 60px;
+                .img{
+                    width:100%;height:100%;
+                    background-image: url("https://kyohyunkim.github.io/Team-Max/img/10.jpeg");
+                    background-size: cover;
+                    background-position: center;
+                }
+                .day{
+                    display: flex;align-items:center;
+                    span{display: block;}
+                    span:nth-of-type(1){font-size: 15px;padding-right: 10px;}
+                }
+                &.active{
+                    width:100%;height: 240px;
+                }
+            }
+        }
+    }
+
+    .page{
+        padding: 20px 0 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .number{font-size: 15px; transform: translateY(-1px);padding: 0 10px;}
+        .left{width:10px;}
+        .right{width:10px;}
+    }
+    
+}

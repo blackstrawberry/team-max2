@@ -8,13 +8,6 @@ Template Name: TOP페이지
 <main>
     <div class="swiper mySwiper">
         <div class="number">/ 3</div>
-        
-        <!-- <div class="swiper-wrapper">
-            <div class="swiper-slide banner1"><img src="<?php echo $asset_uri;?>/img/6.jpeg"><p class="number">1</p><div class="title"><p>TEAM MAX</p><span>Amateur Basketball Team</span></div></div>
-            <div class="swiper-slide banner2"><img src="<?php echo $asset_uri;?>/img/5.jpeg"><p class="number">2</p><div class="title"><p class="orange">TEAM MAX</p><span class="orange">Amateur Basketball Team</span></div></div>
-            <div class="swiper-slide banner3"><img src="<?php echo $asset_uri;?>/img/7.jpeg"><p class="number">3</p><div class="title"><p>TEAM MAX</p><span>Amateur Basketball Team</span></div></div>
-        </div> -->
-        
         <div class="swiper-wrapper">
         <?php 
             $arg = array(
@@ -36,15 +29,12 @@ Template Name: TOP페이지
                     $post_img3 = wp_get_attachment_image_src($post_img3, 'large');
                     $post_img_url3 = esc_url($post_img3[0]);
         ?>
-
             <div class="swiper-slide banner1"><img src="<?php echo $post_img_url1;?>"><p class="number">1</p><div class="title"><p>TEAM MAX</p><span>Amateur Basketball Team</span></div></div>
             <div class="swiper-slide banner2"><img src="<?php echo $post_img_url2;?>"><p class="number">2</p><div class="title"><p class="orange">TEAM MAX</p><span class="orange">Amateur Basketball Team</span></div></div>
             <div class="swiper-slide banner3"><img src="<?php echo $post_img_url3;?>"><p class="number">3</p><div class="title"><p>TEAM MAX</p><span>Amateur Basketball Team</span></div></div>
-
         <?php endwhile; endif; ?>
         <?php wp_reset_postdata();?>
         </div>
-
         <div class="swiper-pagination"></div>
     </div>
 

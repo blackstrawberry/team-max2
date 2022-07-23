@@ -20,15 +20,18 @@ function pagination($pages = '', $asset_uri, $range = 2){
   global $paged;
   if(empty($paged)) $paged = 1;
 
+  global $wp_query;
+  $lastpage = $wp_query->max_num_pages;
+
   if($pages == ''){
-    global $wp_query;
-    $pages = $wp_query->max_num_pages;
+    $pages = $lastpage;
     if(!$pages){
       $pages = 1;
     }
   }
   if(1 != $pages){
     echo '<div class="page">';
+    echo '<a class="first" href="'.get_pagenum_link(1).'"><img src="'.$asset_uri.'/img/left_arrow.svg" class="left" /><img src="'.$asset_uri.'/img/left_arrow.svg" class="left" /></a>';
     if($paged !=1) echo '<a href="'.get_pagenum_link($paged-1).'"><img src="'.$asset_uri.'/img/left_arrow.svg" class="left" /></a>';
     for($i=1; $i<= $pages; $i++){
       if(1 != $pages && (!($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems)){
@@ -36,33 +39,8 @@ function pagination($pages = '', $asset_uri, $range = 2){
       }
     }
     if($paged != $pages) echo '<a href="'.get_pagenum_link($paged+1).'"><img src="'.$asset_uri.'/img/right_arrow.svg" class="right" /></a>';
+    echo '<a class="last" href="'.get_pagenum_link($lastpage).'"><img src="'.$asset_uri.'/img/right_arrow.svg" class="right" /><img src="'.$asset_uri.'/img/right_arrow.svg" class="right" /></a>';
     echo '</div>';
   }
-}
-
-function gpi_find_image_id($post_id) {
-  if (!$img_id = get_post_thumbnail_id ($post_id)) {
-      $attachments = get_children(array(
-          'post_parent' => $post_id,
-          'post_type' => 'attachment',
-          'numberposts' => 1,
-          'post_mime_type' => 'image'
-      ));
-      if (is_array($attachments)) foreach ($attachments as $a)
-          $img_id = $a->ID;
-  }
-  if ($img_id)
-      return $img_id;
-  return false;
-}
-function find_img_src($post) {
-  if (!$img = gpi_find_image_id($post->ID))
-      if ($img = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches))
-          $img = $matches[1][0];
-  if (is_int($img)) {
-      $img = wp_get_attachment_image_src($img);
-      $img = $img[0];
-  }
-  return $img;
 }
 ?>

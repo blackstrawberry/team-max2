@@ -22,8 +22,14 @@ Template Name: Photo-archive 페이지
         <div class="title">
             <div>Photo</div>
             <ul>
-                <li id="img_btn1">1 <img src="<?php echo $asset_uri;?>/img/icon_home_shop_arrow_black.svg"></li>
-                <li id="img_btn2">2 <img src="<?php echo $asset_uri;?>/img/icon_home_shop_arrow_black.svg"></li>
+                <li id="img_btn1">
+                    <div class="show_bigger"><div></div></div>
+                    <img src="<?php echo $asset_uri;?>/img/icon_home_shop_arrow_black.svg">
+                </li>
+                <li id="img_btn2">
+                    <div class="show_smaller"><div></div><div></div><div></div><div></div></div>
+                    <img src="<?php echo $asset_uri;?>/img/icon_home_shop_arrow_black.svg">
+                </li>
             </ul>
         </div>
 
@@ -42,7 +48,8 @@ Template Name: Photo-archive 페이지
                         <div class="img">
                             <img src="<?php echo $post_img_url;?>" width="100%" height="auto" alt="post_image"/>
                         </div>
-                        <div class="day"><span>&#8226;</span><span><?php echo get_the_date("yy.m.d");?></span></div>
+                        <div class="day"><span>&#8226;</span><span><?php echo get_the_date("Y.m.d");?></span></div>
+                        <?php if($post_description!=""):?><div class="description"><span><?php echo $post_description;?></span></div><?php endif;?>
                     </div>
             <?php endwhile; endif; ?>
         </div>
